@@ -23,6 +23,9 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      
+      - name: Check login
+        run: docker info
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
@@ -30,8 +33,9 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
+          provenance: false
           tags: |
-            neimes/vpn_server:latest
-            neimes/vpn_server:${{ github.sha }}
-          cache-from: type=registry,ref=neimes/vpn_server:latest
+            neimes/vpnbot_server:latest
+            neimes/vpnbot_server:${{ github.sha }}
+          cache-from: type=registry,ref=neimes/vpnbot_server:latest
           cache-to: type=inline
