@@ -35,7 +35,7 @@ func startServer(wg *sync.WaitGroup) {
 	routes.RegisterAdminRoutes(r)
 
 	port := config.GlobalConfig.SERVER_PORT
-	bind := "127.0.0.1:" + port
+	bind := "0.0.0.0:" + port
 	log.Println("🚀 Server started at", bind)
 	if err := r.Run(bind); err != nil {
 		log.Fatalf("❌ Failed to start server: %v", err)
