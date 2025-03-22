@@ -39,10 +39,10 @@ func LoadConfig() {
 	}
 
 	GlobalConfig = Config{
-		DATABASE_URI:      	getEnv("DATABASE_NAME", "vpn_service.db"),
-		SERVER_PORT:       	getEnv("SERVER_PORT", "9010"),
+		DATABASE_URI:      	getEnv("DATABASE_NAME", ""),
+		SERVER_PORT:       	getEnv("SERVER_PORT", ""),
 		SERVER_IP:         	getEnv("SERVER_IP", ""),
-		WG_PORT:           	getEnv("WG_PORT", "51820"),
+		WG_PORT:           	getEnv("WG_PORT", ""),
 		JWT_SECRET:        	getEnv("JWT_SECRET", ""),
 		ADMIN_ID:		   	adminID,
 		ADMIN_NAME:		   	getEnv("ADMIN_NAME", "ADMIN"),
