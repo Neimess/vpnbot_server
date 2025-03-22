@@ -27,7 +27,7 @@ PersistentKeepalive = 25
 `, privateKey,
 		clientIP,
 		config.GlobalConfig.SERVER_PUBLIC_KEY,
-		config.GlobalConfig.SERVER_IP,
+		config.GlobalConfig.SERVER_URI,
 		config.GlobalConfig.WG_PORT)
 
 	lastOctet := strings.Split(clientIP, ".")[3]

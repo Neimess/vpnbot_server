@@ -12,8 +12,9 @@ services:
       - WG_PORT=${WG_PORT}
       - JWT_SECRET={$JWT_SECRET}
       - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
-      - ADMIN_SECRET=${ADMIN_SECRET}H
+      - ADMIN_SECRET=${ADMIN_SECRET}
       - ADMIN_ID=${ADMIN_ID}
+      - SERVER_URI=${SERVER_URI}
     volumes:
       - ./data:/data
       - ./utils/shell:/shell

@@ -13,6 +13,7 @@ type Config struct {
 	SERVER_PORT       	string
 	WG_PORT           	string
 	SERVER_PUBLIC_KEY 	string
+	SERVER_URI			string
 	JWT_SECRET        	string
 	ADMIN_ID		  	int64
 	ADMIN_NAME		  	string
