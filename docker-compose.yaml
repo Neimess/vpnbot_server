@@ -1,0 +1,45 @@
+---
+
+services:
+  api:
+    build: .
+    container_name: vpn_service
+    restart: unless-stopped
+    environment:
+      - SERVER_IP=${SERVER_IP}
+      - SERVER_PORT=${SERVER_PORT}
+      - DATABASE_URI=${DATABASE_URI}
+      - WG_PORT=${WG_PORT}
+      - JWT_SECRET={$JWT_SECRET}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - ADMIN_SECRET=${ADMIN_SECRET}H
+      - ADMIN_ID=${ADMIN_ID}
+    volumes:
+      - ./data:/data
+      - ./utils/shell:/shell
+      - ./configs:/configs
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "${SERVER_PORT}:{SERVER_PORT}"
+    depends_on:
+      - wireguard 
+
+  wireguard:
+    image: linuxserver/wireguard
+    container_name: wireguard
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - SERVERPORT=51825
+      - PEERS=10
+      - PEERDNS=auto
+      - INTERNAL_SUBNET=10.0.0.0/24
+    volumes:
+      - ./configs:/config
+      - /lib/modules:/lib/modules
+    ports:
+      - "51825:51825/udp"
+    sysctls:
+      net.ipv4.ip_forward: "1"
