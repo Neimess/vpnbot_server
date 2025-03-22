@@ -28,7 +28,7 @@ func startServer(wg *sync.WaitGroup) {
 	r := gin.New()
 	r.Use(gin.Recovery())
 	r.Use(gin.Logger())
-	r.SetTrustedProxies([]string{"127.0.0.1"})
+	r.SetTrustedProxies(nil)
 
 	routes.RegisterUserRoutes(r)
 	routes.RegisterAuthRoutes(r)
