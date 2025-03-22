@@ -1,14 +1,13 @@
 package config
 
 import (
-	"github.com/joho/godotenv"
 	"log"
 	"os"
 	"strconv"
 )
 
 type Config struct {
-	DATABASE_URI      	string
+	DATABASE_NAME      	string
 	SERVER_IP         	string
 	SERVER_PORT       	string
 	WG_PORT           	string
@@ -24,9 +23,6 @@ type Config struct {
 var GlobalConfig Config
 
 func LoadConfig() {
-	if err := godotenv.Load(); err != nil {
-		log.Println(".env not found, using enviroments")
-	}
 
 	publicKey, err := GetWgPublicKey()
 	if err != nil {
@@ -39,7 +35,7 @@ func LoadConfig() {
 	}
 
 	GlobalConfig = Config{
-		DATABASE_URI:      	getEnv("DATABASE_NAME", ""),
+		DATABASE_NAME:      	getEnv("DATABASE_NAME", ""),
 		SERVER_PORT:       	getEnv("SERVER_PORT", ""),
 		SERVER_IP:         	getEnv("SERVER_IP", ""),
 		WG_PORT:           	getEnv("WG_PORT", ""),
@@ -53,11 +49,12 @@ func LoadConfig() {
 }
 
 func getEnv(key, defaultValue string) string {
-	if value, exists := os.LookupEnv(key); exists {
-		return value
+	value := os.Getenv(key)
+	if value == "" {
+		if defaultValue == "" {
+			log.Fatalf("ERROR: Required environment variable %s is missing", key)
+		}
+		return defaultValue
 	}
-	if defaultValue == "" {
-		log.Fatalf("ERROR: Required environment variable %s is missing", key)
-	}
-	return defaultValue
+	return value
 }

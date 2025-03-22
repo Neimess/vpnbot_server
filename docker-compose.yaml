@@ -8,9 +8,9 @@ services:
     environment:
       - SERVER_IP=${SERVER_IP}
       - SERVER_PORT=${SERVER_PORT}
-      - DATABASE_URI=${DATABASE_URI}
+      - DATABASE_NAME=${DATABASE_NAME}
       - WG_PORT=${WG_PORT}
-      - JWT_SECRET={$JWT_SECRET}
+      - JWT_SECRET=${JWT_SECRET}
       - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
       - ADMIN_SECRET=${ADMIN_SECRET}
       - ADMIN_ID=${ADMIN_ID}
