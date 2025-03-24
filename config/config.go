@@ -7,17 +7,17 @@ import (
 )
 
 type Config struct {
-	DATABASE_NAME      	string
-	SERVER_IP         	string
-	SERVER_PORT       	string
-	WG_PORT           	string
-	SERVER_PUBLIC_KEY 	string
-	SERVER_URI			string
-	JWT_SECRET        	string
-	ADMIN_ID		  	int64
-	ADMIN_NAME		  	string
-	TELEGRAM_BOT_TOKEN	string
-	ADMIN_SECRET		string
+	DATABASE_NAME      string
+	SERVER_IP          string
+	SERVER_PORT        string
+	WG_PORT            string
+	SERVER_PUBLIC_KEY  string
+	SERVER_URI         string
+	JWT_SECRET         string
+	ADMIN_ID           int64
+	ADMIN_NAME         string
+	TELEGRAM_BOT_TOKEN string
+	ADMIN_SECRET       string
 }
 
 var GlobalConfig Config
@@ -35,16 +35,16 @@ func LoadConfig() {
 	}
 
 	GlobalConfig = Config{
-		DATABASE_NAME:      	getEnv("DATABASE_NAME", ""),
-		SERVER_PORT:       	getEnv("SERVER_PORT", ""),
-		SERVER_IP:         	getEnv("SERVER_IP", ""),
-		WG_PORT:           	getEnv("WG_PORT", ""),
-		JWT_SECRET:        	getEnv("JWT_SECRET", ""),
-		ADMIN_ID:		   	adminID,
-		ADMIN_NAME:		   	getEnv("ADMIN_NAME", "ADMIN"),
+		DATABASE_NAME:      getEnv("DATABASE_NAME", ""),
+		SERVER_PORT:        getEnv("SERVER_PORT", ""),
+		SERVER_IP:          getEnv("SERVER_IP", ""),
+		WG_PORT:            getEnv("WG_PORT", ""),
+		JWT_SECRET:         getEnv("JWT_SECRET", ""),
+		ADMIN_ID:           adminID,
+		ADMIN_NAME:         getEnv("ADMIN_NAME", "ADMIN"),
 		TELEGRAM_BOT_TOKEN: getEnv("TELEGRAM_BOT_TOKEN", ""),
-		ADMIN_SECRET:		getEnv("ADMIN_SECRET", ""),
-		SERVER_PUBLIC_KEY: publicKey,
+		ADMIN_SECRET:       getEnv("ADMIN_SECRET", ""),
+		SERVER_PUBLIC_KEY:  publicKey,
 	}
 }
 

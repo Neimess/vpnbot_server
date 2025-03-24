@@ -12,7 +12,7 @@ import (
 
 func StartPaymentExpiryChecker() {
 
-	ticker := time.NewTicker(time.Hour * 24)
+	ticker := time.NewTicker(time.Hour)
 	go func() {
 		for range ticker.C {
 			log.Println("Starting daily payment expiry checker...")

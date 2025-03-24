@@ -35,8 +35,6 @@ func AddClientToServer(telegramID int64, publicKey string, clientIP string) erro
 	return nil
 }
 
-
-
 func RemoveClientServer(telegramID int64) error {
 	configData, err := os.ReadFile(wgConfigPath)
 	if err != nil {
@@ -65,7 +63,6 @@ func RemoveClientServer(telegramID int64) error {
 	log.Printf("Client with TelegramID %d removed from WireGuard", telegramID)
 	return nil
 }
-
 
 func removePeerBlock(config, peer string) string {
 	idx := strings.Index(config, peer)
